@@ -1,19 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
-// const mongoose  = require("mongoose")
 import cors from "cors";
-// const cors = require("cors")
 
 const app = express();
 
 import dotenv from "dotenv";
 dotenv.config();
 
-
-// const projectsRoute = require("./Routers/projectsRoute");
 import projectsRoute from "./Routers/projectsRoute.js";
-// const commentRoute = require("./Routers/commentRoute");
 import commentRoute from "./Routers/commentRoute.js";
+import milestonesRoute from "./Routers/milestoneRoute.js";
+import futureGoalsRoute from "./Routers/futureGoalsRoute.js";
 
 app.use(express.json())
 
@@ -35,8 +32,8 @@ app.post("/",(req,res)=>{
 
 app.use("/api" ,projectsRoute);
 app.use("/api" ,commentRoute);
-
-
+app.use("/api", milestonesRoute);
+app.use("/api", futureGoalsRoute);
 
 
 app.listen(8080, () => {
